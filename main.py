@@ -8,7 +8,7 @@ def is_even(number: int) -> bool:
         number (int): The number to check.
 
     Returns:
-        bool: True if the number is even, False otherwise.
+        bool: True if the number is even, False otherwise
     """
     return number % 2 == 0
 
