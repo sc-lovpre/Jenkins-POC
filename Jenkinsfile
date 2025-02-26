@@ -33,6 +33,7 @@ pipeline {
         repo = "${repo ?: ''}"
         OUTPUT_FILE = "${WORKSPACE}/logs/${repo ?: 'unknown'}_log.txt"
         PR_NUMBER = "${pr_number ?: ''}"
+        echo "PR Number is ${PR_NUMBER}"
         commit_sha = "${commit_sha ?: ''}"
         source_branch = "${source_branch ?: ''}"
         target_branch = "${target_branch ?: ''}"
