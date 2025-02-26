@@ -4,7 +4,6 @@ def BUILD_SUMMARY = new StringBuffer()
 
 pipeline {
     agent any
-
     
     options {
         timestamps()
