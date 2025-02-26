@@ -29,15 +29,15 @@ pipeline {
         GIT_API_URL = "https://api.github.com/repos/sc-lovpre/Jenkins-POC/"
         GIT_TO_USER_EMAIL_PATH = "${JENKINS_HOME}/email.json"
         
-        requestor = "${params.requestor_user_name ?: ''}"
-        repo = "${params.repo ?: ''}"
-        OUTPUT_FILE = "${WORKSPACE}/logs/${params.repo ?: 'unknown'}_log.txt"
-        PR_NUMBER = "${params.pr_number ?: ''}"
-        commit_sha = "${params.commit_sha ?: ''}"
-        source_branch = "${params.source_branch ?: ''}"
-        target_branch = "${params.target_branch ?: ''}"
-        action = "${params.action ?: ''}"
-        requested_reviewers = "${params.requested_reviewers ?: '[]'}"
+        requestor = "${requestor_user_name ?: ''}"
+        repo = "${repo ?: ''}"
+        OUTPUT_FILE = "${WORKSPACE}/logs/${repo ?: 'unknown'}_log.txt"
+        PR_NUMBER = "${pr_number ?: ''}"
+        commit_sha = "${commit_sha ?: ''}"
+        source_branch = "${source_branch ?: ''}"
+        target_branch = "${target_branch ?: ''}"
+        action = "${action ?: ''}"
+        requested_reviewers = "${requested_reviewers ?: '[]'}"
     }
 
     stages {
@@ -49,7 +49,7 @@ pipeline {
                     
                     // Log all parameters for debugging
                     def paramsLog = "Pipeline Parameters:\n"
-                    params.each { key, value ->
+                    each { key, value ->
                         paramsLog += "${key}: ${value}\n"
                     }
                     echo paramsLog
@@ -123,7 +123,7 @@ pipeline {
                         def outputFileContent = """
                         All Emails: ${ALL_EMAILS}
                         Requestor Email: ${REQUESTOR_EMAIL}
-                        PR State: ${params.state ?: 'Unknown'}
+                        PR State: ${state ?: 'Unknown'}
                         Sender: ${requestor}
                         Requested Reviewers: ${requested_reviewers}
                         Source Branch: ${source_branch}
