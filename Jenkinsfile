@@ -32,8 +32,7 @@ pipeline {
         requestor = "${requestor_user_name ?: ''}"
         repo = "${repo ?: ''}"
         OUTPUT_FILE = "${WORKSPACE}/logs/${repo ?: 'unknown'}_log.txt"
-        // PR_NUMBER = "${pr_number ?: ''}"
-        sh 'echo "PR Number is ${PR_NUMBER}"'
+        PR_NUMBER = "${pr_number ?: ''}"
         commit_sha = "${commit_sha ?: ''}"
         source_branch = "${source_branch ?: ''}"
         target_branch = "${target_branch ?: ''}"
@@ -54,6 +53,8 @@ pipeline {
                         paramsLog += "${key}: ${value}\n"
                     }
                     echo paramsLog
+                    echo "PR Number is ${pr_number}"
+                    echo "PR Number is ${PR_NUMBER}"
                     
                     // Add validation for required parameters
                     if (!PR_NUMBER || !commit_sha || !source_branch || !target_branch) {
